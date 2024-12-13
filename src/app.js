@@ -1,6 +1,7 @@
 import express from "express";
 import dbConnect from "./config/DbConnect.js";
 import book from "./models/Book.js";
+import routes from "./routes/index.js";
 
 const connection = await dbConnect();
 
@@ -13,8 +14,7 @@ connection.once("open", () => {
 });
 
 const app = express();
-
-app.use(express.json());
+routes(app);
 
 app.get("/", (req, res) => {
   res.status(200).send("Curso de Node.js");
