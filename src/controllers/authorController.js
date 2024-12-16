@@ -1,11 +1,10 @@
-import author from "../models/Author.js";
-
+import { author } from "../models/Author.js";
 class authorController {
   static async ListAuthors(req, res) {
     try {
-      const booksList = await author.find({});
+      const authorsList = await author.find({});
 
-      res.status(200).json(booksList);
+      res.status(200).json(authorsList);
     } catch (error) {
       res
         .status(500)
