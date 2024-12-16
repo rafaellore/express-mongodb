@@ -14,6 +14,17 @@ class BookController {
     }
   }
 
+  static async listBooksByEditor(req, res) {
+    const editor = req.query.editora;
+
+    try {
+      const booksByEditor = await book.find({ editora: editor });
+      res.status(200).json(booksByEditor);
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha na busca` });
+    }
+  }
+
   static async createBook(req, res) {
     const newBook = req.body;
 
